@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/wuleijun/RJExpandableTableView"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
-  s.license      = "MIT"
+  s.license      = { :type => "MIT", :file => "LICENSE" }
 
   s.author             = { "rayjuneWu" => "wuleijun8@gmail.com" }
   s.social_media_url   = "http://weibo.com/rayjuneWu"
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/wuleijun/RJExpandableTableView.git", :tag => "v0.0.1" }
 
-  s.source_files  = "RJExpandableTableView.swift"
+  s.source_files  = "RJExpandableTableView/RJExpandableTableView.swift","RJExpandableTableView/RJExpandableTableView.swift"
   s.framework  = "UIKit"
   s.requires_arc = true
 
