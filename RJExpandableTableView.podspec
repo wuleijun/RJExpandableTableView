@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/wuleijun/RJExpandableTableView.git", :tag => "v0.0.1" }
 
-  s.source_files  = "RJExpandableTableView/RJExpandableTableView.swift","RJExpandableTableView/RJExpandableTableView.swift"
+  s.source_files  = "RJExpandableTableView/RJExpandableTableView.swift","RJExpandableTableView/RJExpandableTableViewCell.swift"
   s.framework  = "UIKit"
   s.requires_arc = true
 
