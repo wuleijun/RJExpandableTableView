@@ -12,6 +12,11 @@
 		45160F571CE42E5300714291 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45160F551CE42E5300714291 /* Main.storyboard */; };
 		45160F591CE42E5300714291 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45160F581CE42E5300714291 /* Assets.xcassets */; };
 		45160F5C1CE42E5300714291 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45160F5A1CE42E5300714291 /* LaunchScreen.storyboard */; };
+		45160F651CE42ED100714291 /* RJExpandableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45160F641CE42ED100714291 /* RJExpandableTableView.swift */; };
+		45D0EBF01CE46D3E0049454D /* ExpandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D0EBEE1CE46D3E0049454D /* ExpandTableViewCell.swift */; };
+		45D0EBF11CE46D3E0049454D /* ExpandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45D0EBEF1CE46D3E0049454D /* ExpandTableViewCell.xib */; };
+		45D0EBF31CE47EAE0049454D /* RJExpandableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D0EBF21CE47EAE0049454D /* RJExpandableTableViewCell.swift */; };
+		45D0EBF61CE481B50049454D /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D0EBF51CE481B50049454D /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		45160F581CE42E5300714291 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45160F5B1CE42E5300714291 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45160F5D1CE42E5300714291 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45160F641CE42ED100714291 /* RJExpandableTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RJExpandableTableView.swift; sourceTree = "<group>"; };
+		45D0EBEE1CE46D3E0049454D /* ExpandTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandTableViewCell.swift; sourceTree = "<group>"; };
+		45D0EBEF1CE46D3E0049454D /* ExpandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandTableViewCell.xib; sourceTree = "<group>"; };
+		45D0EBF21CE47EAE0049454D /* RJExpandableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RJExpandableTableViewCell.swift; sourceTree = "<group>"; };
+		45D0EBF51CE481B50049454D /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +51,7 @@
 				45160F501CE42E5300714291 /* RJExpandableTableView */,
 				45160F4F1CE42E5300714291 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
 		};
 		45160F4F1CE42E5300714291 /* Products */ = {
@@ -54,14 +65,35 @@
 		45160F501CE42E5300714291 /* RJExpandableTableView */ = {
 			isa = PBXGroup;
 			children = (
+				45D0EBF41CE481A50049454D /* Helper */,
+				45160F631CE42E5900714291 /* RJExpandableTabelView */,
 				45160F511CE42E5300714291 /* AppDelegate.swift */,
 				45160F531CE42E5300714291 /* ViewController.swift */,
+				45D0EBEE1CE46D3E0049454D /* ExpandTableViewCell.swift */,
+				45D0EBEF1CE46D3E0049454D /* ExpandTableViewCell.xib */,
 				45160F551CE42E5300714291 /* Main.storyboard */,
 				45160F581CE42E5300714291 /* Assets.xcassets */,
 				45160F5A1CE42E5300714291 /* LaunchScreen.storyboard */,
 				45160F5D1CE42E5300714291 /* Info.plist */,
 			);
 			path = RJExpandableTableView;
+			sourceTree = "<group>";
+		};
+		45160F631CE42E5900714291 /* RJExpandableTabelView */ = {
+			isa = PBXGroup;
+			children = (
+				45160F641CE42ED100714291 /* RJExpandableTableView.swift */,
+				45D0EBF21CE47EAE0049454D /* RJExpandableTableViewCell.swift */,
+			);
+			name = RJExpandableTabelView;
+			sourceTree = "<group>";
+		};
+		45D0EBF41CE481A50049454D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				45D0EBF51CE481B50049454D /* Helper.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +157,7 @@
 				45160F5C1CE42E5300714291 /* LaunchScreen.storyboard in Resources */,
 				45160F591CE42E5300714291 /* Assets.xcassets in Resources */,
 				45160F571CE42E5300714291 /* Main.storyboard in Resources */,
+				45D0EBF11CE46D3E0049454D /* ExpandTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +168,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45D0EBF31CE47EAE0049454D /* RJExpandableTableViewCell.swift in Sources */,
+				45160F651CE42ED100714291 /* RJExpandableTableView.swift in Sources */,
 				45160F541CE42E5300714291 /* ViewController.swift in Sources */,
 				45160F521CE42E5300714291 /* AppDelegate.swift in Sources */,
+				45D0EBF01CE46D3E0049454D /* ExpandTableViewCell.swift in Sources */,
+				45D0EBF61CE481B50049454D /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +323,7 @@
 				45160F621CE42E5300714291 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
