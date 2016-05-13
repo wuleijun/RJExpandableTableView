@@ -102,11 +102,11 @@ public class RJExpandableTableView: UITableView {
 // MARK: TableView DataSource
 extension RJExpandableTableView : UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return expandDataSource.numberOfSectionsInTableView!(tableView)
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if canExpand(section) {
             canExpandedSections.append(section)
@@ -121,7 +121,7 @@ extension RJExpandableTableView : UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let section = indexPath.section
         
@@ -155,7 +155,7 @@ extension RJExpandableTableView : UITableViewDataSource {
 // MARK: TableView Delegate
 extension RJExpandableTableView : UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let section = indexPath.section
         if canExpand(section) {
             if indexPath.row == 0 {
