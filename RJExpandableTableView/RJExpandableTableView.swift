@@ -49,7 +49,7 @@ public class RJExpandableTableView: UITableView {
     }
 
     private weak var expandDataSource: RJExpandableTableViewDataSource!
-    private weak var expandDelegate: RJExpandableTableViewDelegate?
+    private weak var expandDelegate: RJExpandableTableViewDelegate!
     
     // MARK: Public
     public func expandSection(section: Int, animated: Bool) {
@@ -154,6 +154,10 @@ extension RJExpandableTableView : UITableViewDataSource {
 
 // MARK: TableView Delegate
 extension RJExpandableTableView : UITableViewDelegate {
+    
+    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return expandDelegate.tableView!(tableView, heightForRowAtIndexPath: indexPath)
+    }
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let section = indexPath.section
