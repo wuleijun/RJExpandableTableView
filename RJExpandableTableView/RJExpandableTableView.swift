@@ -8,24 +8,24 @@
 
 import UIKit
 
-protocol RJExpandableTableViewDataSource: UITableViewDataSource {
+public protocol RJExpandableTableViewDataSource: UITableViewDataSource {
     
     func tableView(tableView: RJExpandableTableView, canExpandInSection section: Int) -> Bool
     func tableView(tableView: RJExpandableTableView, expandingCellForSection section: Int) -> RJExpandingTableViewCell
     func tableView(tableView: RJExpandableTableView, needsToDownloadDataForExpandSection section: Int) -> Bool
 }
 
-protocol RJExpandableTableViewDelegate: UITableViewDelegate {
+public protocol RJExpandableTableViewDelegate: UITableViewDelegate {
     func tableView(tableView: RJExpandableTableView, downloadDataForExpandableSection section: Int)
 }
 
-class RJExpandableTableView: UITableView {
+public class RJExpandableTableView: UITableView {
     
     lazy var canExpandedSections = [Int]()
     lazy var expandedSections = [Int]()
     lazy var downloadingSections = [Int]()
     
-    override var delegate: UITableViewDelegate? {
+    public override var delegate: UITableViewDelegate? {
         get{
             return super.delegate
         }
@@ -35,7 +35,7 @@ class RJExpandableTableView: UITableView {
         }
     }
     
-    override var dataSource: UITableViewDataSource? {
+    public override var dataSource: UITableViewDataSource? {
         get{
             return super.dataSource
         }
@@ -52,7 +52,7 @@ class RJExpandableTableView: UITableView {
     private weak var expandDelegate: RJExpandableTableViewDelegate?
     
     // MARK: Public
-    func expandSection(section: Int, animated: Bool) {
+    public func expandSection(section: Int, animated: Bool) {
         guard !expandedSections.contains(section) else {
             return
         }
@@ -63,13 +63,13 @@ class RJExpandableTableView: UITableView {
         expandedSections.append(section)
         reloadData()
     }
-    func collapseSection(section: Int, animated: Bool) {
+    public func collapseSection(section: Int, animated: Bool) {
         if let index = expandedSections.indexOf(section) {
             expandedSections.removeAtIndex(index)
         }
         reloadData()
     }
-    func cancelDownloadInSection(section: Int) {
+    public func cancelDownloadInSection(section: Int) {
         guard let index = downloadingSections.indexOf(section) else {
             return
         }
@@ -77,11 +77,11 @@ class RJExpandableTableView: UITableView {
         reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: section)], withRowAnimation: .Automatic)
     }
     
-    func canExpandSection(section: Int) -> Bool {
+    public func canExpandSection(section: Int) -> Bool {
         return canExpandedSections.contains(section)
     }
     
-    func isSectionExpand(section: Int) -> Bool {
+    public func isSectionExpand(section: Int) -> Bool {
         return true
     }
     

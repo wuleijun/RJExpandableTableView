@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum RJExpandStatus {
+public enum RJExpandStatus {
     case Collapsed,Expanded
 }
 
-protocol RJExpandingTableViewCell {
+public protocol RJExpandingTableViewCell {
     func setLoading(loading:Bool)
     func setExpandStatus(status: RJExpandStatus,animated:Bool)
 }
