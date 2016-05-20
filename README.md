@@ -77,4 +77,4 @@ extension ViewController: RJExpandableTableViewDelegate {
 ```
 
 ## Sample Screenshots
-
+<https://github.com/wuleijun/RJExpandableTableView/blob/master/screen%20shot%200.png>
