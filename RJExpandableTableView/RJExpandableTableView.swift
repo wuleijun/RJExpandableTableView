@@ -52,6 +52,13 @@ public class RJExpandableTableView: UITableView {
     private weak var expandDelegate: RJExpandableTableViewDelegate!
     
     // MARK: Public
+    
+    /**
+     Operation to expand a section.
+     
+     - parameter section:  expanded section
+     - parameter animated: animate or not
+     */
     public func expandSection(section: Int, animated: Bool) {
         guard !expandedSections.contains(section) else {
             return
@@ -63,12 +70,25 @@ public class RJExpandableTableView: UITableView {
         expandedSections.append(section)
         reloadData()
     }
+    
+    /**
+     Operation to collapse a section
+     
+     - parameter section:  collapsed section
+     - parameter animated: animate or not
+     */
     public func collapseSection(section: Int, animated: Bool) {
         if let index = expandedSections.indexOf(section) {
             expandedSections.removeAtIndex(index)
         }
         reloadData()
     }
+    
+    /**
+     Operation to cancel download in a section.
+
+     - parameter section: downloading section
+     */
     public func cancelDownloadInSection(section: Int) {
         guard let index = downloadingSections.indexOf(section) else {
             return
@@ -77,12 +97,26 @@ public class RJExpandableTableView: UITableView {
         reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: section)], withRowAnimation: .Automatic)
     }
     
+    /**
+     Check a section is expandable or not
+     
+     - parameter section: The section
+     
+     - returns: Bool
+     */
     public func canExpandSection(section: Int) -> Bool {
         return canExpandedSections.contains(section)
     }
     
+    /**
+     Check a section is expanding or not
+     
+     - parameter section: The section
+     
+     - returns: Bool
+     */
     public func isSectionExpand(section: Int) -> Bool {
-        return true
+        return expandedSections.contains(section)
     }
     
     // MARK: Private Helper
@@ -103,7 +137,10 @@ public class RJExpandableTableView: UITableView {
 extension RJExpandableTableView : UITableViewDataSource {
     
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return expandDataSource.numberOfSectionsInTableView!(tableView)
+        if expandDataSource.respondsToSelector(#selector(UITableViewDataSource.numberOfSectionsInTableView(_:))) {
+            return expandDataSource.numberOfSectionsInTableView!(tableView)
+        }
+        return 1
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

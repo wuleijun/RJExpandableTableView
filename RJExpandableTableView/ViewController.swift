@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     let expandCellId = "ExpandTableViewCell"
     
     @IBOutlet weak var tableView: UITableView!{
@@ -17,23 +17,27 @@ class ViewController: UIViewController {
             tableView.registerNib(UINib(nibName: expandCellId, bundle: nil), forCellReuseIdentifier: expandCellId)
         }
     }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-  }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
 }
 
 extension ViewController:RJExpandableTableViewDataSource {
     
-
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 10
     }
@@ -64,10 +68,16 @@ extension ViewController:RJExpandableTableViewDataSource {
 }
 
 extension ViewController: RJExpandableTableViewDelegate {
-
+    
     func tableView(tableView: RJExpandableTableView, downloadDataForExpandableSection section: Int) {
+        
         delay(2){
-            tableView.expandSection(section, animated: true)
+            if section % 2 == 0{
+                tableView.expandSection(section, animated: true)
+            }else{
+                print("Download failed!")
+                tableView.cancelDownloadInSection(section)
+            }
         }
     }
 }

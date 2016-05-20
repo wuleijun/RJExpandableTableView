@@ -29,7 +29,7 @@ class ExpandTableViewCell: UITableViewCell {
 extension ExpandTableViewCell: RJExpandingTableViewCell {
     
     func setLoading(loading: Bool) {
-        
+    
         if (loading) {
             indicatorView.startAnimating()
         }else{
@@ -39,11 +39,16 @@ extension ExpandTableViewCell: RJExpandingTableViewCell {
     }
     
     func setExpandStatus(status: RJExpandStatus,animated:Bool) {
+        
         var angle: CGFloat = 0
+        var duration: NSTimeInterval = 0
         if status == .Expanded {
             angle = CGFloat(M_PI)
         }
-        UIView.animateWithDuration(0.3) {
+        if animated {
+            duration = 0.3
+        }
+        UIView.animateWithDuration(duration) {
             self.arrowImageView.transform = CGAffineTransformMakeRotation(angle)
         }
         
