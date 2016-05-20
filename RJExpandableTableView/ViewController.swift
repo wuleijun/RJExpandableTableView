@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     let expandCellId = "ExpandTableViewCell"
     
-    @IBOutlet weak var tableView: UITableView!{
+    @IBOutlet weak var tableView: RJExpandableTableView!{
         didSet{
             tableView.registerNib(UINib(nibName: expandCellId, bundle: nil), forCellReuseIdentifier: expandCellId)
         }
@@ -34,11 +34,9 @@ class ViewController: UIViewController {
 extension ViewController:RJExpandableTableViewDataSource {
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44
-    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+
         return 10
     }
     
@@ -68,6 +66,10 @@ extension ViewController:RJExpandableTableViewDataSource {
 }
 
 extension ViewController: RJExpandableTableViewDelegate {
+    
+    func tableView(tableView: RJExpandableTableView, heightForExpandingCellAtSection section: Int) -> CGFloat {
+        return 100
+    }
     
     func tableView(tableView: RJExpandableTableView, downloadDataForExpandableSection section: Int) {
         

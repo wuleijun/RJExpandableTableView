@@ -15,8 +15,9 @@ public protocol RJExpandableTableViewDataSource: UITableViewDataSource {
     func tableView(tableView: RJExpandableTableView, needsToDownloadDataForExpandSection section: Int) -> Bool
 }
 
-public protocol RJExpandableTableViewDelegate: UITableViewDelegate {
+@objc public protocol RJExpandableTableViewDelegate: UITableViewDelegate {
     func tableView(tableView: RJExpandableTableView, downloadDataForExpandableSection section: Int)
+    optional func tableView(tableView: RJExpandableTableView, heightForExpandingCellAtSection section: Int) -> CGFloat
 }
 
 public class RJExpandableTableView: UITableView {
@@ -193,7 +194,17 @@ extension RJExpandableTableView : UITableViewDataSource {
 extension RJExpandableTableView : UITableViewDelegate {
     
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return expandDelegate.tableView!(tableView, heightForRowAtIndexPath: indexPath)
+        if indexPath.row == 0  {
+            if expandDelegate.respondsToSelector(#selector(RJExpandableTableViewDelegate.tableView(_:heightForExpandingCellAtSection:))) {
+                return expandDelegate.tableView!(self, heightForExpandingCellAtSection: indexPath.section)
+            }
+            return 44
+        }else{
+            if expandDelegate.respondsToSelector(#selector(UITableViewDelegate.tableView(_:heightForRowAtIndexPath:))) {
+                return expandDelegate.tableView!(tableView, heightForRowAtIndexPath: indexPath)
+            }
+            return 44
+        }
     }
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
