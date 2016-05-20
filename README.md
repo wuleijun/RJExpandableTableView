@@ -1,6 +1,6 @@
 # RJExpandableTableView
 
-[![Version](	https://img.shields.io/cocoapods/v/RJExpandableTableView.svg)
+[![Version](	https://img.shields.io/cocoapods/v/RJExpandableTableView.svg)](http://cocoadocs.org/docsets/RJExpandableTableView)
 [![License](https://img.shields.io/cocoapods/l/RJExpandableTableView.svg?style=flat)](http://cocoadocs.org/docsets/RJExpandableTableView)
 [![Platform](https://img.shields.io/cocoapods/p/RJExpandableTableView.svg?style=flat)](http://cocoadocs.org/docsets/RJExpandableTableView)
 
