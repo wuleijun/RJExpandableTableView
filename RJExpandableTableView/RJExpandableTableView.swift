@@ -198,13 +198,12 @@ extension RJExpandableTableView : UITableViewDelegate {
             if expandDelegate.respondsToSelector(#selector(RJExpandableTableViewDelegate.tableView(_:heightForExpandingCellAtSection:))) {
                 return expandDelegate.tableView!(self, heightForExpandingCellAtSection: indexPath.section)
             }
-            return 44
         }else{
             if expandDelegate.respondsToSelector(#selector(UITableViewDelegate.tableView(_:heightForRowAtIndexPath:))) {
                 return expandDelegate.tableView!(tableView, heightForRowAtIndexPath: indexPath)
             }
-            return 44
         }
+        return self.rowHeight
     }
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

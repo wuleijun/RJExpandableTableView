@@ -33,8 +33,6 @@ class ViewController: UIViewController {
 
 extension ViewController:RJExpandableTableViewDataSource {
     
-    
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 
         return 10
