@@ -65,6 +65,10 @@ extension ViewController:RJExpandableTableViewDataSource {
 
 extension ViewController: RJExpandableTableViewDelegate {
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
+    }
+    
     func tableView(tableView: RJExpandableTableView, heightForExpandingCellAtSection section: Int) -> CGFloat {
         return 100
     }

@@ -15,9 +15,21 @@ public protocol RJExpandableTableViewDataSource: UITableViewDataSource {
     func tableView(tableView: RJExpandableTableView, needsToDownloadDataForExpandSection section: Int) -> Bool
 }
 
-@objc public protocol RJExpandableTableViewDelegate: UITableViewDelegate {
+public protocol RJExpandableTableViewDelegate: UITableViewDelegate {
     func tableView(tableView: RJExpandableTableView, downloadDataForExpandableSection section: Int)
-    optional func tableView(tableView: RJExpandableTableView, heightForExpandingCellAtSection section: Int) -> CGFloat
+    
+    //Optional
+    func tableView(tableView: RJExpandableTableView, heightForExpandingCellAtSection section: Int) -> CGFloat
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+}
+
+extension RJExpandableTableViewDelegate {
+    func tableView(tableView: RJExpandableTableView, heightForExpandingCellAtSection section: Int) -> CGFloat {
+        return 44
+    }
+    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
 }
 
 public class RJExpandableTableView: UITableView {
@@ -195,15 +207,13 @@ extension RJExpandableTableView : UITableViewDelegate {
     
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0  {
-            if expandDelegate.respondsToSelector(#selector(RJExpandableTableViewDelegate.tableView(_:heightForExpandingCellAtSection:))) {
-                return expandDelegate.tableView!(self, heightForExpandingCellAtSection: indexPath.section)
-            }
+            
+            return expandDelegate.tableView(self, heightForExpandingCellAtSection: indexPath.section)
+            
         }else{
-            if expandDelegate.respondsToSelector(#selector(UITableViewDelegate.tableView(_:heightForRowAtIndexPath:))) {
-                return expandDelegate.tableView!(tableView, heightForRowAtIndexPath: indexPath)
-            }
+
+            return expandDelegate.tableView(tableView, heightForRowAtIndexPath: indexPath)
         }
-        return self.rowHeight
     }
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
