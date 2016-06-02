@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol RJExpandableTableViewDataSource: UITableViewDataSource {
+public protocol RJExpandableTableViewDataSource: UITableViewDataSource{
     
     func tableView(tableView: RJExpandableTableView, canExpandInSection section: Int) -> Bool
     func tableView(tableView: RJExpandableTableView, expandingCellForSection section: Int) -> RJExpandingTableViewCell
@@ -38,7 +38,7 @@ public class RJExpandableTableView: UITableView {
     lazy var expandedSections = [Int]()
     lazy var downloadingSections = [Int]()
     
-    public override var delegate: UITableViewDelegate? {
+    override weak public var delegate: UITableViewDelegate? {
         get{
             return super.delegate
         }
@@ -48,7 +48,7 @@ public class RJExpandableTableView: UITableView {
         }
     }
     
-    public override var dataSource: UITableViewDataSource? {
+    override weak public var dataSource: UITableViewDataSource? {
         get{
             return super.dataSource
         }
